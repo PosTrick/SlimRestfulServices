@@ -1,14 +1,14 @@
 {
-    "name": "slim/slim-skeleton",
+    "name": "slim/slim-restful-services",
     "description": "A Slim Framework skeleton application for rapid development",
-    "keywords": ["microframework", "rest", "router", "psr7"],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "keywords": ["microframework", "rest", "router", "Slim"],
+    "homepage": "https://github.com/PosTrick",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
+            "name": "Postrick",
+            "email": "postrick.info@gmail.com",
+            "homepage": "http://postrick.altervista.org/"
         }
     ],
     "require": {

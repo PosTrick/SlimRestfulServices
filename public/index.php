@@ -17,17 +17,17 @@ require __DIR__ . '/../configs/'.strtolower(APPLICATION_ENV).'.config.php';
 session_start();
 
 // Instantiate the app
-$settings = require __DIR__ . '/../src/settings.php';
+$settings = require __DIR__ . '/../settings/settings.php';
 $app = new \Slim\App($settings);
 
 // Set up dependencies
-require __DIR__ . '/../src/dependencies.php';
+require __DIR__ . '/../settings/dependencies.php';
 
-// Register middleware
-require __DIR__ . '/../src/middleware.php';
-
-// Register routes
-require __DIR__ . '/../src/routes.php';
+// Automatically load router files
+$routers = glob(__DIR__ . '/../routers/*.router.php');
+foreach ($routers as $router) {
+    require $router;
+}
 
 // Run app
 $app->run();
