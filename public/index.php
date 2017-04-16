@@ -1,15 +1,18 @@
 <?php
-if (PHP_SAPI == 'cli-server') {
-    // To help the built-in PHP dev server, check if the request was actually for
-    // something which should probably be served as a static file
-    $url  = parse_url($_SERVER['REQUEST_URI']);
-    $file = __DIR__ . $url['path'];
-    if (is_file($file)) {
-        return false;
-    }
+// Get Env variable to automatically include environment config
+defined('APPLICATION_ENV')
+|| define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ?
+    getenv('APPLICATION_ENV') :
+    'local'));
+
+// show errors when working on local
+if(APPLICATION_ENV === 'local'){
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 }
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../configs/'.strtolower(APPLICATION_ENV).'.config.php';
 
 session_start();
 
